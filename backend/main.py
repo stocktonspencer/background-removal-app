@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi import FastAPI, UploadFile, File, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from PIL import Image, UnidentifiedImageError
@@ -86,9 +86,10 @@ async def remove_background(file: UploadFile = File(...)):
         # Apply mask to image
         image.putalpha(mask)
         
-        # Save result
-        output_path = "temp_output.png"
-        image.save(output_path)
+        # Convert to bytes
+        img_byte_arr = io.BytesIO()
+        image.save(img_byte_arr, format='PNG')
+        img_byte_arr.seek(0)
         
         inference_time = time() - model_start
         print(f"Inference time: {round(inference_time, 3)}s")
@@ -99,8 +100,8 @@ async def remove_background(file: UploadFile = File(...)):
         print(f"Post-processing time: {round(post_time, 3)}s")
         print(f"Total time: {round(total_time, 3)}s\n")
         
-        # Return the processed image
-        return FileResponse(output_path)
+        # Return bytes directly
+        return Response(img_byte_arr.getvalue(), media_type="image/png")
         
     except UnidentifiedImageError:
         raise HTTPException(status_code=400, detail="Cannot process this image format")
