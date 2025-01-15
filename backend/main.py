@@ -46,7 +46,7 @@ transform_image = transforms.Compose([
     transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
 ])
 
-@app.post("/api/remove-background", response_model=FileResponse)
+@app.post("/api/remove-background")
 async def remove_background(file: UploadFile = File(...)):    
     start_time = time()
     print(f"\nStarting background removal at: {start_time}")
