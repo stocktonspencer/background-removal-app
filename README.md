@@ -30,3 +30,7 @@ docker compose up --build
 - Backend: FastAPI
 - ML Model: Rem-BG (Hugging Face)
 - Containerization: Docker
+
+<img width="1248" alt="Screenshot 2025-01-15 at 4 01 11 PM" src="https://github.com/user-attachments/assets/3dd9b97d-9176-43ee-8c3a-720d4ed81570" />
+
+
