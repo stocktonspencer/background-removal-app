@@ -1,0 +1,9 @@
+fastapi>=0.109.0
+python-multipart  # for UploadFile
+pillow  # for PIL
+torch  # for PyTorch
+torchvision
+transformers  # for AutoModelForImageSegmentation
+uvicorn[standard]  # ASGI server
+kornia
+timm
