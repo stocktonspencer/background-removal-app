@@ -1,4 +1,32 @@
-Basic application that uploads a file and removes its background using the Rem-BG model on Hugging Face
+# Background Removal Service
 
-Download the repo:
-Run: docker compose up --build
+A web application that automatically removes backgrounds from images using the Rem-BG model from Hugging Face.
+
+## Features
+- Simple file upload interface
+- Background removal using state-of-the-art ML model
+- Docker containerized for easy deployment
+
+## Prerequisites
+- Docker
+- Docker Compose
+
+## Quick Start
+1. Clone the repository: 
+git clone https://github.com/stocktonspencer/background-removal-app.git
+
+2. Start the application:
+docker compose up --build
+
+3. Open your browser and navigate to `http://localhost:5173`
+
+## Usage
+1. Click the upload button to select an image
+2. Wait for processing
+3. Download your background-removed image
+
+## Tech Stack
+- Frontend: React
+- Backend: FastAPI
+- ML Model: Rem-BG (Hugging Face)
+- Containerization: Docker
